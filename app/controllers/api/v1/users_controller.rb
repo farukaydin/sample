@@ -4,11 +4,11 @@ class Api::V1::UsersController < Api::V1::BaseController
   def index
     @users = User.all
 
-    render json: @users.to_json
+    render json: UserSerializer.new(@users).serialized_json
   end
 
   def show
-    render json: @user.to_json
+    render json: UserSerializer.new(@user).serialized_json
   end
 
   def create
@@ -23,7 +23,7 @@ class Api::V1::UsersController < Api::V1::BaseController
 
   def update
     if @user.update(user_params)
-      return render json: @user.to_json
+      return render json: UserSerializer.new(@user).serialized_json
     end
 
     render json: { errors: @user.errors }.to_json
