@@ -18,7 +18,7 @@ class Api::V1::UsersController < Api::V1::BaseController
       return head :created
     end
 
-    render json: { errors: @user.errors }.to_json
+    render json: ErrorSerializer.new(@user.errors).serialized_json
   end
 
   def update
@@ -26,7 +26,7 @@ class Api::V1::UsersController < Api::V1::BaseController
       return render json: UserSerializer.new(@user).serialized_json
     end
 
-    render json: { errors: @user.errors }.to_json
+    render json: ErrorSerializer.new(@user.errors).serialized_json
   end
 
   def destroy
@@ -34,7 +34,7 @@ class Api::V1::UsersController < Api::V1::BaseController
       return head :no_content
     end
 
-    render json: { errors: @user.errors }.to_json
+    render json: ErrorSerializer.new(@user.errors).serialized_json
   end
 
   private
