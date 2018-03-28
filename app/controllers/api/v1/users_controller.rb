@@ -4,37 +4,30 @@ class Api::V1::UsersController < Api::V1::BaseController
   def index
     @users = User.all
 
-    render json: UserSerializer.new(@users).serialized_json
+    render_object(@users)
   end
 
   def show
-    render json: UserSerializer.new(@user).serialized_json
+    render_object(@user)
   end
 
   def create
     @user = User.new(user_params)
+    return head :created if @user.save
 
-    if @user.save
-      return head :created
-    end
-
-    render json: ErrorSerializer.new(@user.errors).serialized_json
+    render_errors(@user)
   end
 
   def update
-    if @user.update(user_params)
-      return render json: UserSerializer.new(@user).serialized_json
-    end
+    return render_object(@user) if @user.update(user_params)
 
-    render json: ErrorSerializer.new(@user.errors).serialized_json
+    render_errors(@user)
   end
 
   def destroy
-    if @user.destroy
-      return head :no_content
-    end
+    return head :no_content if @user.destroy
 
-    render json: ErrorSerializer.new(@user.errors).serialized_json
+    render_errors(@user)
   end
 
   private
