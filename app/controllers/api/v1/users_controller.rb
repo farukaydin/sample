@@ -13,7 +13,7 @@ class Api::V1::UsersController < Api::V1::BaseController
 
   def create
     @user = User.new(user_params)
-    return head :created if @user.save
+    return render_object(@user, status: :created) if @user.save
 
     render_errors(@user)
   end

@@ -35,5 +35,58 @@ module Swagger::Controllers
       end
     end
 
+    swagger_path '/users' do
+      operation :get do
+        key :summary, 'All Users'
+        key :description, 'Returns all users from the system'
+        key :produces, [
+          'application/json'
+        ]
+        key :tags, [
+          'user'
+        ]
+        response 200 do
+          key :description, 'users response'
+          schema do
+            key :type, :array
+            items do
+              key :'$ref', :User
+            end
+          end
+        end
+      end
+
+      operation :post do
+        key :description, 'Creates a new user in the system'
+        key :produces, [
+          'application/json'
+        ]
+        key :tags, [
+          'user'
+        ]
+        parameter do
+          key :name, :user
+          key :in, :body
+          key :description, 'User to add to the system'
+          key :required, true
+          schema do
+            key :'$ref', :User
+          end
+        end
+        response 201 do
+          key :description, 'user response'
+          schema do
+            key :'$ref', :User
+          end
+        end
+        response 422 do
+          key :description, 'Unprocessable Entity'
+          schema do
+            key :'$ref', :Error
+          end
+        end
+      end
+    end
+
   end
 end
