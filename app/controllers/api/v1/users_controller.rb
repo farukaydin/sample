@@ -8,8 +8,7 @@ class Api::V1::UsersController < Api::V1::BaseController
   end
 
   def show
-    render json: UserSerializer.new(@user)
-    # render_object(@user)
+    render_object(@user)
   end
 
   def create
@@ -26,7 +25,7 @@ class Api::V1::UsersController < Api::V1::BaseController
   end
 
   def projects
-    # render_object(@user.projects)
+    render_object(@user.projects)
   end
 
   def destroy
