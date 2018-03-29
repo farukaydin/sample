@@ -142,5 +142,34 @@ module Swagger::Controllers
         end
       end
     end
+
+    swagger_path '/users/{id}/projects' do
+      operation :get do
+        key :description, 'Get the projects of the user'
+        key :produces, [
+          'application/json'
+        ]
+        key :tags, [
+          'user',
+          'project'
+        ]
+        response 200 do
+          key :description, 'user response'
+          schema do
+            key :type, :array
+            items do
+              key :'$ref', :Project
+            end
+          end
+        end
+
+        response 422 do
+          key :description, 'Unprocessable Entity'
+          schema do
+            key :'$ref', :Error
+          end
+        end
+      end
+    end
   end
 end
