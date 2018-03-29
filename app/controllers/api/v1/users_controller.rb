@@ -1,5 +1,5 @@
 class Api::V1::UsersController < Api::V1::BaseController
-  before_action :assign_user, only: [:show, :update, :destroy]
+  before_action :assign_user, only: [:show, :update, :destroy, :projects]
 
   def index
     @users = User.all
@@ -8,7 +8,8 @@ class Api::V1::UsersController < Api::V1::BaseController
   end
 
   def show
-    render_object(@user)
+    render json: UserSerializer.new(@user)
+    # render_object(@user)
   end
 
   def create
@@ -22,6 +23,10 @@ class Api::V1::UsersController < Api::V1::BaseController
     return render_object(@user) if @user.update(user_params)
 
     render_errors(@user)
+  end
+
+  def projects
+    # render_object(@user.projects)
   end
 
   def destroy
