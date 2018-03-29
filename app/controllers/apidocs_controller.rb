@@ -15,10 +15,11 @@ class ApidocsController < ActionController::Base
         key :name, 'MIT'
       end
     end
-    key :host, 'api.askcharlie.com'
+    key :host, 'localhost:3000'
     key :basePath, '/api/v1'
     key :consumes, ['application/json']
     key :produces, ['application/json']
+    key :schemes,  ["http"]
   end
 
   # A list of all classes that have swagger_* declarations.

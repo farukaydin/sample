@@ -130,6 +130,14 @@ module Swagger::Controllers
         key :tags, [
           'user'
         ]
+        parameter do
+          key :name, :id
+          key :in, :path
+          key :description, 'ID of user to fetch'
+          key :required, true
+          key :type, :integer
+          key :format, :int64
+        end
         response 204 do
           key :description, 'response after user removed'
         end
@@ -153,6 +161,14 @@ module Swagger::Controllers
           'user',
           'project'
         ]
+        parameter do
+          key :name, :id
+          key :in, :path
+          key :description, 'ID of user to fetch'
+          key :required, true
+          key :type, :integer
+          key :format, :int64
+        end
         response 200 do
           key :description, 'user response'
           schema do
