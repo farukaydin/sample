@@ -121,5 +121,26 @@ module Swagger::Controllers
       end
     end
 
+    swagger_path '/users/{id}' do
+      operation :delete do
+        key :description, 'Removes the user'
+        key :produces, [
+          'application/json'
+        ]
+        key :tags, [
+          'user'
+        ]
+        response 204 do
+          key :description, 'response after user removed'
+        end
+
+        response 422 do
+          key :description, 'Unprocessable Entity'
+          schema do
+            key :'$ref', :Error
+          end
+        end
+      end
+    end
   end
 end
