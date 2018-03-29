@@ -1,4 +1,4 @@
-module Swagger::Serializers
+module Swagger::Models
   class User
     include Swagger::Blocks
 

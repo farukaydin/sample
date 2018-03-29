@@ -32,8 +32,8 @@ class ApidocsController < ActionController::Base
 
   # A list of all classes that have swagger_* declarations.
   SWAGGERED_CLASSES = [
-    Swagger::Serializers::User,
-    Swagger::Serializers::Project,
+    Swagger::Models::User,
+    Swagger::Models::Project,
     self
   ].freeze
 
