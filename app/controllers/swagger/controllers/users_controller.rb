@@ -26,10 +26,10 @@ module Swagger::Controllers
             key :'$ref', :User
           end
         end
-        response :default do
-          key :description, 'unexpected error'
+        response 422 do
+          key :description, 'Unprocessable Entity'
           schema do
-            # key :'$ref', :ErrorModel
+            key :'$ref', :Error
           end
         end
       end
