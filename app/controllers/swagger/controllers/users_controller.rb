@@ -67,7 +67,7 @@ module Swagger::Controllers
           key :description, 'User to add to the system'
           key :required, true
           schema do
-            key :'$ref', :User
+            key :'$ref', :UserInput
           end
         end
         response 201 do
@@ -108,7 +108,7 @@ module Swagger::Controllers
           key :description, 'User to add to the system'
           key :required, true
           schema do
-            key :'$ref', :User
+            key :'$ref', :UserInput
           end
         end
         response 200 do
