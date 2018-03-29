@@ -3,11 +3,7 @@ module Swagger::Models
     include Swagger::Blocks
 
     swagger_schema :UserInput do
-      key :required, [:id, :name, :age]
-      property :id do
-        key :type, :integer
-        key :format, :int64
-      end
+      key :required, [:name, :age]
       property :name do
         key :type, :string
       end
