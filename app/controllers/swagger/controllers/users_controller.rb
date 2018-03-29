@@ -26,11 +26,8 @@ module Swagger::Controllers
             key :'$ref', :User
           end
         end
-        response 422 do
-          key :description, 'Unprocessable Entity'
-          schema do
-            key :'$ref', :Error
-          end
+        response 404 do
+          key :description, 'User Not Found'
         end
       end
     end
@@ -120,6 +117,9 @@ module Swagger::Controllers
             key :'$ref', :User
           end
         end
+        response 404 do
+          key :description, 'User Not Found'
+        end
         response 422 do
           key :description, 'Unprocessable Entity'
           schema do
@@ -148,6 +148,10 @@ module Swagger::Controllers
         end
         response 204 do
           key :description, 'response after user removed'
+        end
+
+        response 404 do
+          key :description, 'User Not Found'
         end
 
         response 422 do
@@ -187,11 +191,8 @@ module Swagger::Controllers
           end
         end
 
-        response 422 do
-          key :description, 'Unprocessable Entity'
-          schema do
-            key :'$ref', :Error
-          end
+        response 404 do
+          key :description, 'User Not Found'
         end
       end
     end
