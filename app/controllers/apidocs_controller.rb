@@ -5,26 +5,17 @@ class ApidocsController < ActionController::Base
     key :swagger, '2.0'
     info do
       key :version, '1.0.0'
-      key :title, 'Swagger Petstore'
-      key :description, 'A sample API that uses a petstore as an example to ' \
+      key :title, 'Swagger'
+      key :description, 'A sample API that uses a userstore as an example to ' \
                         'demonstrate features in the swagger-2.0 specification'
-      key :termsOfService, 'http://helloreverb.com/terms/'
       contact do
-        key :name, 'Wordnik API Team'
+        key :name, 'Askcharlie Core Team'
       end
       license do
         key :name, 'MIT'
       end
     end
-    tag do
-      key :name, 'pet'
-      key :description, 'Pets operations'
-      externalDocs do
-        key :description, 'Find more info here'
-        key :url, 'https://swagger.io'
-      end
-    end
-    key :host, 'petstore.swagger.wordnik.com'
+    key :host, 'api.askcharlie.com'
     key :basePath, '/api/v1'
     key :consumes, ['application/json']
     key :produces, ['application/json']
