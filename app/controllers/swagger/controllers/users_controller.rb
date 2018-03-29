@@ -88,5 +88,38 @@ module Swagger::Controllers
       end
     end
 
+    swagger_path '/users/{id}' do
+      operation :put do
+        key :description, 'Updates the user'
+        key :produces, [
+          'application/json'
+        ]
+        key :tags, [
+          'user'
+        ]
+        parameter do
+          key :name, :user
+          key :in, :body
+          key :description, 'User to add to the system'
+          key :required, true
+          schema do
+            key :'$ref', :User
+          end
+        end
+        response 200 do
+          key :description, 'user response'
+          schema do
+            key :'$ref', :User
+          end
+        end
+        response 422 do
+          key :description, 'Unprocessable Entity'
+          schema do
+            key :'$ref', :Error
+          end
+        end
+      end
+    end
+
   end
 end
