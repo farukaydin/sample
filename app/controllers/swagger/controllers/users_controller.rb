@@ -98,6 +98,14 @@ module Swagger::Controllers
           'user'
         ]
         parameter do
+          key :name, :id
+          key :in, :path
+          key :description, 'ID of user to fetch'
+          key :required, true
+          key :type, :integer
+          key :format, :int64
+        end
+        parameter do
           key :name, :user
           key :in, :body
           key :description, 'User to add to the system'
